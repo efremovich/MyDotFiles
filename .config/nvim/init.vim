@@ -1,3 +1,4 @@
+
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
@@ -18,8 +19,9 @@ Plug 'nsf/gocode',  {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' 
  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
  " Theme
-Plug 'morhetz/gruvbox'
-Plug 'lifepillar/vim-gruvbox8'
+Plug 'sainnhe/gruvbox-material'
+"Plug 'morhetz/gruvbox'
+"Plug 'lifepillar/vim-gruvbox8'
 
 " Automatic close parens
 "Plug 'jiangmiao/auto-pairs'
@@ -558,7 +560,7 @@ endtry
 set termguicolors
 
 " Vim airline theme
-let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox_material'
 
 " Change vertical split character to be a space (essentially hide it)
 set fillchars+=vert:.
@@ -583,81 +585,28 @@ function! TrailingSpaceHighlights() abort
   highlight Trail ctermbg=red guibg=red
   call matchadd('Trail', '\s\+$', 100)
 endfunction
-
-function! s:custom_jarvis_colors()
-  " coc.nvim color changes
-  hi link CocErrorSign WarningMsg
-  hi link CocWarningSign Number
-  hi link CocInfoSign Type
-
-  " Make background transparent for many things
-  hi Normal ctermbg=NONE guibg=NONE
-  hi NonText ctermbg=NONE guibg=NONE
-  hi LineNr ctermfg=NONE guibg=NONE
-  hi SignColumn ctermfg=NONE guibg=NONE
-  "hi StatusLine guifg=#16252b guibg=#6699CC
-  "hi StatusLineNC guifg=#16252b guibg=#16252b
-
-  " Try to hide vertical spit and end of buffer symbol
-  hi VertSplit gui=NONE guifg=#17252c guibg=#17252c
-  "hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=#17252c guifg=#17252c
-
-  " Customize NERDTree directory
-  "hi NERDTreeCWD guifg=#99c794
-
-  " Make background color transparent for git changes
-  hi SignifySignAdd guibg=NONE
-  hi SignifySignDelete guibg=NONE
-  hi SignifySignChange guibg=NONE
-
-  " Highlight git change signs
-  hi SignifySignAdd guifg=#99c794
-  hi SignifySignDelete guifg=#ec5f67
-  hi SignifySignChange guifg=#c594c5
-endfunction
-
 autocmd! ColorScheme * call TrailingSpaceHighlights()
-autocmd! ColorScheme gruvbox8 call s:custom_jarvis_colors()
 
-" Call method on window enter
-augroup WindowManagement
-  autocmd!
-  autocmd WinEnter * call Handle_Win_Enter()
-augroup END
-
-" Change highlight group of preview window when open
-function! Handle_Win_Enter()
-  if &previewwindow
-    setlocal winhighlight=Normal:MarkdownError
-  endif
-endfunction
-
-" Editor theme
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+" For dark version.
 set background=dark
-try
-  colorscheme gruvbox8
-catch
-  colorscheme gruvbox
-endtry
-"hi! link javaScript             blue
-"hi! link jsExportDefault        Gruvbox8Blue
-"hi! link jsImport               GruvboxBlue
-"hi! link jsFrom                 GruvboxBlue
-"hi! link jsObjectKey            GruvboxBlue
-"hi! link jsObjectProp           GruvboxBlue
-"hi! link jsExport               GruvboxRedBold
-"hi! link jsObjectFuncName       GruvboxBlueBold
-"hi! link jsFuncCall             red
-"hi! link jsVariableDef          GruvboxFg1
-"hi! link jsDestructuringBlock   GruvboxFg1
-"hi! link jsObjectShorthandProp  GruvboxFg1
-"hi! link jsFuncArgs             green
-"hi! link htmlH2                 GruvboxFg1
-"hi! link jsBrackets             GruvboxFg4
-"hi! link jsObjectBraces         GruvboxFg4
-"hi! link jsFuncBraces           GruvboxFg4
-"hi! link Normal                 GruvboxFg4
-"hi! link Noise                  GruvboxFg4
+" For light version.
+" Set contrast.
+" This configuration option should be placed before `colorscheme gruvbox-material`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_cursor = 'red'
+let g:gruvbox_material_diagnostic_line_highlight = 1
+let g:gruvbox_material_current_word = 'bold'
+let g:gruvbox_material_palette = 'mix'
+let g:gruvbox_material_menu_selection_background = 'red'
+colorscheme gruvbox-material
+
+
+
 " ============================================================================ "
 " ===                                 MISC.                                === "
 " ============================================================================ "
