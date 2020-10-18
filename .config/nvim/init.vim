@@ -701,3 +701,4 @@ let g:vimwiki_list = [{
 	\ 'custom_wiki2html': 'vimwiki_markdown',
 	\ 'template_ext': '.tpl'}]
 nmap <space>x :VimwikiToggleListItem<CR>
+	
