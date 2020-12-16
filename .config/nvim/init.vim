@@ -1,3 +1,4 @@
+
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
@@ -457,13 +458,7 @@ function! s:custom_jarvis_colors()
   "hi SignifySignChange guifg=#c594c5
 endfunction
 
-autocmd! ColorScheme * call s:custom_jarvis_colors()
-
-" Call method on window enter
-augroup WindowManagement
-  autocmd!
-  autocmd WinEnter * call Handle_Win_Enter()
-augroup END
+autocmd! ColorScheme * call TrailingSpaceHighlights()
 
 " Change highlight group of preview window when open
 function! Handle_Win_Enter()
@@ -489,6 +484,8 @@ let g:gruvbox_material_menu_selection_background = 'red'
 colorscheme gruvbox-material
 
 
+
+=======
 
 " ============================================================================ "
 " ===                                 MISC.                                === "
@@ -584,3 +581,4 @@ let g:vimwiki_list = [{
 	\ 'custom_wiki2html': 'vimwiki_markdown',
 	\ 'template_ext': '.tpl'}]
 nmap <space>x :VimwikiToggleListItem<CR>
+	
