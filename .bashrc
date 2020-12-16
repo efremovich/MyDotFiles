@@ -189,6 +189,7 @@ alias nmirrorlist="sudo nano /etc/pacman.d/mirrorlist"
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 
+alias config='/usr/bin/git --git-dir=$HOME/.config/config-linux/ --work-tree=$HOME'
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()
