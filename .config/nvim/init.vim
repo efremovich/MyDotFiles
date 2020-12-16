@@ -16,9 +16,9 @@ Plug 'nsf/gocode',  {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' 
 " VUE JS
 
 " Fuzzy finding and buffer management
- Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
- " Theme
+" Theme
 Plug 'sainnhe/gruvbox-material'
 "Plug 'morhetz/gruvbox'
 "Plug 'lifepillar/vim-gruvbox8'
@@ -483,9 +483,6 @@ let g:gruvbox_material_palette = 'mix'
 let g:gruvbox_material_menu_selection_background = 'red'
 colorscheme gruvbox-material
 
-
-
-=======
 
 " ============================================================================ "
 " ===                                 MISC.                                === "
