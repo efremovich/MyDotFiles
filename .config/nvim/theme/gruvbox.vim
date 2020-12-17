@@ -1,3 +1,20 @@
+" Enable true color support
+set termguicolors
+
+" Vim airline theme
+let g:airline_theme='gruvbox_material'
+
+" Change vertical split character to be a space (essentially hide it)
+set fillchars+=vert:.
+
+" Set preview window to appear at bottom
+set splitbelow
+
+" Don't dispay mode in command line (airilne already shows it)
+set noshowmode
+
+" Set floating window to be slightly transparent
+set winbl=10
 " ============================================================================ "
 " ===                      CUSTOM COLORSCHEME CHANGES                      === "
 " ============================================================================ "

@@ -1,4 +1,3 @@
-
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
@@ -16,9 +15,9 @@ Plug 'nsf/gocode',  {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' 
 " VUE JS
 
 " Fuzzy finding and buffer management
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" Theme
+ " Theme
 Plug 'sainnhe/gruvbox-material'
 "Plug 'morhetz/gruvbox'
 "Plug 'lifepillar/vim-gruvbox8'
@@ -48,11 +47,11 @@ Plug 'rstacruz/vim-closer'
 " Improved motion in Vim
 Plug 'easymotion/vim-easymotion'
 " Snippet support
-"Plug 'Shougo/neosnippet'
-"Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " Print function signatures in echo area
-"Plug 'Shougo/echodoc.vim'
+Plug 'Shougo/echodoc.vim'
 
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
@@ -61,13 +60,13 @@ Plug 'tpope/vim-fugitive'
 
 " === Javascript Plugins === "
 " Typescript syntax highlighting
-"Plug 'HerringtonDarkholme/yats.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " ReactJS JSX syntax highlighting
-"Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
 " Generate JSDoc commands based on function signature
-"Plug 'heavenshell/vim-jsdoc'
+Plug 'heavenshell/vim-jsdoc'
 
 " Icons
 Plug 'ryanoasis/vim-devicons'
@@ -80,100 +79,40 @@ Plug 'vimwiki/vimwiki'
 Plug 'blindFS/vim-taskwarrior'
 Plug 'tools-life/taskwiki'
 Plug 'alvan/vim-closetag'
+" Closetags
+Plug 'alvan/vim-closetag'
 
-
-Plug 'sheerun/vim-polyglot'
-Plug 'nvim-treesitter/nvim-treesitter'
+"Plug 'glepnir/galaxyline.nvim'
+"Plug 'kyazdani42/nvim-web-devicons' " lua
+"Plug 'ryanoasis/vim-devicons' " vimscript
 
 " Initialize plugin system
 call plug#end()
 
-source $HOME/.config/nvim/general/settings.vim
-source $HOME/.config/nvim/keys/mappings.vim
-source $HOME/.config/nvim/plug-config/coc/coc.vim
-source $HOME/.config/nvim/plug-config/coc/coc-extensions.vim
-
 nmap <F3> :CocCommand explorer<CR>
-"let g:nerdtree_sync_cursorline = 1
 nmap <F2> :TagbarToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
-"COC VIM
+" j/k will move virtual lines (lines that wrap)
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-
-let g:go_term_mode = "split"
-"let g:go_term_height = 30
-"let g:go_term_width = 30
-let g:go_term_enabled = 1
-
-" Go-vim plugin
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-
-let g:go_auto_type_info = 1
-let g:go_fmt_command = "goimports"
-
-
-" Go-Specific
-au FileType go nmap <leader>i <Plug>(go-install)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <leader>e <Plug>(go-rename)
-au FileType go nmap <leader>i <Plug>(go-info)
-au FileType go nmap <leader>l :GoLint<CR>
-au FileType go nmap <leader>q :GoImport<space>
-au FileType go nmap <leader>f <Plug>:GoImpl<space>
-au FileType go nmap <leader>ff <Plug>(go-implements)
-au FileType go vmap <leader>r :GoAddTags<space>
-au FileType go vmap <leader>p :GoPlay<CR>
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>s <Plug>(go-install)
-"au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>v <Plug>(go-vet)
-au FileType go nmap <leader>ds <Plug>(go-def-split)
-au FileType go nmap <leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <leader>dt <Plug>(go-def-tab)
-au FileType go nmap <leader>gb <Plug>(go-doc-browser)
-au FileType go nmap <leader>gs <Plug>(go-doc-split)
-au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader><leader>g :GoDecls<CR>
-au FileType go nmap <F9> :GoDebugBreakpoint<CR>
-au FileType go nmap <F5> :GoDebugContinue<CR>
-au FileType go nmap <F11> :GoDebugStep<CR>
-au FileType go nmap <F10> :GoDebugNext<CR>
-set autowrite
-
+source $HOME/.config/nvim/keys/mappings.vim
+source $HOME/.config/nvim/general/settings.vim
+source $HOME/.config/nvim/plug-config/coc/coc.vim
+source $HOME/.config/nvim/plug-config/coc/coc-extensions.vim
+source $HOME/.config/nvim/theme/gruvbox.vim
+source $HOME/.config/nvim/plug-config/go.vim
+source $HOME/.config/nvim/plug-config/floatterm.vim
+source $HOME/.config/nvim/plug-config/closetags.vim
+source $HOME/.config/nvim/plug-config/airline.vim
+source $HOME/.config/nvim/plug-config/denite.vim
+source $HOME/.config/nvim/plug-config/quickscope.vim
+source $HOME/.config/nvim/plug-config/startify.vim
+"luafile $HOME/.config/nvim/lua/nvcodeline.lua
+"luafile $HOME/.config/nvim/lua/nvcodeline.lua
+"luafile $HOME/.config/nvim/lua/treesitter.lua
 
 " === vim-better-whitespace === "
 "   <leader>y - Automatically remove trailing whitespace
@@ -206,321 +145,20 @@ xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
 
+" Tab navigation like Firefox.
+nnoremap <S-C-Tab> :bprevious<CR>
+nnoremap <S-Tab>   :bnext<CR>
+
 nmap <silent> <C-d> <Plug>(coc-cursors-word)*
 xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
 " Auto-pairs settings
 "let g:AutoPairsFlyMode=0
 
-" ============================================================================ "
-" ===                             KEY MAPPINGS                             === "
-" ============================================================================ "
-
-" === Denite shorcuts === "
-"   ;         - Browser currently open buffers
-"   <leader>t - Browse list of files in current directory
-"   <leader>g - Search current directory for occurences of given term and close window if no results
-"   <leader>j - Search current directory for occurences of word under cursor
-nmap ; :Denite buffer<CR>
-nmap <leader>t :DeniteProjectDir file/rec<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
-nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
-
-" Define mappings while in 'filter' mode
-"   <C-o>         - Switch to normal mode inside of search results
-"   <Esc>         - Exit denite window in any mode
-"   <CR>          - Open currently selected file in any mode
-"   <C-t>         - Open currently selected file in a new tab
-"   <C-v>         - Open currently selected file a vertical split
-"   <C-h>         - Open currently selected file in a horizontal split
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-  imap <silent><buffer> <C-o>
-  \ <Plug>(denite_filter_quit)
-  inoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
-  inoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  inoremap <silent><buffer><expr> <C-t>
-  \ denite#do_map('do_action', 'tabopen')
-  inoremap <silent><buffer><expr> <C-v>
-  \ denite#do_map('do_action', 'vsplit')
-  inoremap <silent><buffer><expr> <C-h>
-  \ denite#do_map('do_action', 'split')
-endfunction
-
-" Define mappings while in denite window
-"   <CR>        - Opens currently selected file
-"   q or <Esc>  - Quit Denite window
-"   d           - Delete currenly selected file
-"   p           - Preview currently selected file
-"   <C-o> or i  - Switch to insert mode inside of filter prompt
-"   <C-t>       - Open currently selected file in a new tab
-"   <C-v>       - Open currently selected file a vertical split
-"   <C-h>       - Open currently selected file in a horizontal split
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <Esc>
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <C-o>
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <C-t>
-  \ denite#do_map('do_action', 'tabopen')
-  nnoremap <silent><buffer><expr> <C-v>
-  \ denite#do_map('do_action', 'vsplit')
-  nnoremap <silent><buffer><expr> <C-h>
-  \ denite#do_map('do_action', 'split')
-endfunction
-
-" ============================================================================ "
-" ===                           PLUGIN SETUP                               === "
-" ============================================================================ "
-try
-" === Denite setup ==="
-" Use ripgrep for searching current directory for files
-" By default, ripgrep will respect rules in .gitignore
-"   --files: Print each file that would be searched (but don't search)
-"   --glob:  Include or exclues files for searching that match the given glob
-"            (aka ignore .git files)
-"
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-
-" Use ripgrep in place of "grep"
-call denite#custom#var('grep', 'command', ['rg'])
-
-" Custom options for ripgrep
-"   --vimgrep:  Show results with every match on it's own line
-"   --hidden:   Search hidden directories and files
-"   --heading:  Show the file name above clusters of matches from each file
-"   --S:        Search case insensitively if the pattern is all lowercase
-call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
-
-" Recommended defaults for ripgrep via Denite docs
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-" Remove date from buffer list
-call denite#custom#var('buffer', 'date_format', '')
-
-" Custom options for Denite
-"   auto_resize             - Auto resize the Denite window height automatically.
-"   prompt                  - Customize denite prompt
-"   direction               - Specify Denite window direction as directly below current pane
-"   winminheight            - Specify min height for Denite window
-"   highlight_mode_insert   - Specify h1-CursorLine in insert mode
-"   prompt_highlight        - Specify color of prompt
-"   highlight_matched_char  - Matched characters highlight
-"   highlight_matched_range - matched range highlight
-let s:denite_options = {'default' : {
-\ 'split': 'floating_relative',
-\ 'auto_resize': 1,
-\ 'source_names': 'short',
-\ 'prompt': 'λ ',
-\ 'winrow': 1,
-\ 'vertical_preview': 1
-\ }}
-
-" Loop through denite options and enable them
-function! s:profile(opts) abort
-  for l:fname in keys(a:opts)
-    for l:dopt in keys(a:opts[l:fname])
-      call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
-    endfor
-  endfor
-endfunction
-
-call s:profile(s:denite_options)
-catch
-  echo 'Denite not installed. It should work after running :PlugInstall'
-endtry
-
-try
-
-" === Vim airline ==== "
-" Enable extensions
-"let g:airline_extensions = ['branch', 'hunks', 'coc']
-
-" Update section z to just have line number
-"let g:airline_section_z = airline#section#create(['linenr'])
-
-" Do not draw separators for empty sections (only for the active window) >
-let g:airline_skip_empty_sections = 1
-
-" Smartly uniquify buffers names with similar filename, suppressing common parts of paths.
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-" Custom setup that removes filetype/whitespace from default vim airline bar
-let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
-
-
-" Enable powerline fonts
-let g:airline_powerline_fonts = 1
-
-" Enable caching of syntax highlighting groups
-let g:airline_highlighting_cache = 1
-
-" Define custom airline symbols
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" Don't show git changes to current file in airline
-let g:airline#extensions#hunks#enabled=0
-
-" AirLine settings
-"set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#ale#enabled = 1
-"let g:airline#extensions#branch#enabled = 1
-"let g:airline#extensions#hunks#enabled=1
-catch
-  echo 'Airline not installed. It should work after running :PlugInstall'
-endtry
-
-" ============================================================================ "
-" ===                                UI                                    === "
-" ============================================================================ "
-
-" Enable true color support
-set termguicolors
-
-" Vim airline theme
-let g:airline_theme='gruvbox_material'
-
-" Change vertical split character to be a space (essentially hide it)
-set fillchars+=vert:.
-
-" Set preview window to appear at bottom
-set splitbelow
-
-" Don't dispay mode in command line (airilne already shows it)
-set noshowmode
-
-" Set floating window to be slightly transparent
-set winbl=10
-
-" ============================================================================ "
-" ===                      CUSTOM COLORSCHEME CHANGES                      === "
-" ============================================================================ "
-"
-" Add custom highlights in method that is executed every time a colorscheme is sourced
-" See https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f for details
-function! TrailingSpaceHighlights() abort
-  highlight Trail ctermbg=red guibg=red
-  call matchadd('Trail', '\s\+$', 100)
-endfunction
-
-autocmd! ColorScheme * call TrailingSpaceHighlights()
-
-function! s:custom_jarvis_colors()
-  " coc.nvim color changes
-  hi link CocErrorSign WarningMsg
-  hi link CocWarningSign Number
-  hi link CocInfoSign Type
-
-  " Make background transparent for many things
-  "hi Normal ctermbg=NONE guibg=NONE
-  hi NonText ctermbg=NONE guibg=NONE
-  hi LineNr ctermfg=NONE guibg=NONE
-  hi SignColumn ctermfg=NONE guibg=NONE
-  "hi StatusLine guifg=#16252b guibg=#6699CC
-  "hi StatusLineNC guifg=#16252b guibg=#16252b
-
-  " Try to hide vertical spit and end of buffer symbol
-  "hi VertSplit gui=NONE guifg=#17252c guibg=#17252c
-  "hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=#17252c guifg=#17252c
-
-  " Customize NERDTree directory
-  "hi NERDTreeCWD guifg=#99c794
-
-  " Make background color transparent for git changes
-  "hi SignifySignAdd guibg=NONE
-  "hi SignifySignDelete guibg=NONE
-  "hi SignifySignChange guibg=NONE
-
-  " Highlight git change signs
-  "hi SignifySignAdd guifg=#99c794
-  "hi SignifySignDelete guifg=#ec5f67
-  "hi SignifySignChange guifg=#c594c5
-endfunction
-
-autocmd! ColorScheme * call TrailingSpaceHighlights()
-
-" Change highlight group of preview window when open
-function! Handle_Win_Enter()
-  if &previewwindow
-    setlocal winhighlight=Normal:MarkdownError
-  endif
-endfunction
-" Important!!
-
-if has('termguicolors')
-  set termguicolors
-endif
-set background=dark
-" Set contrast.
-" This configuration option should be placed before `colorscheme gruvbox-material`.
-" Available values: 'hard', 'medium'(default), 'soft'
-let g:gruvbox_material_background = 'medium'
-let g:gruvbox_material_cursor = 'red'
-let g:gruvbox_material_diagnostic_line_highlight = 1
-let g:gruvbox_material_current_word = 'bold'
-let g:gruvbox_material_palette = 'mix'
-let g:gruvbox_material_menu_selection_background = 'red'
-colorscheme gruvbox-material
-
 
 " ============================================================================ "
 " ===                                 MISC.                                === "
 " ============================================================================ "
-
-let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.vim',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'floating': {
-\     'position': 'floating',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingTop': {
-\     'position': 'floating',
-\     'floating-position': 'center-top',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingLeftside': {
-\     'position': 'floating',
-\     'floating-position': 'left-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   }
-\ }
 
 " Use preset argument to open it
 nmap <space>ed :CocCommand explorer <CR>
@@ -529,43 +167,6 @@ nmap <space>ef :CocCommand explorer --preset floating<CR>
 " List all presets
 nmap <space>el :CocList explPresets
 
-let g:floaterm_keymap_toggle = '<F6>'
-let g:floaterm_keymap_next   = '<F7>'
-let g:floaterm_keymap_prev   = '<F8>'
-let g:floaterm_keymap_new    = '<F9>'
-
-" Floaterm
-let g:floaterm_gitcommit='floaterm'
-let g:floaterm_autoinsert=1
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
-let g:floaterm_wintitle=0
-let g:floaterm_autoclose=1
-
-nmap <space>ft :FloatermNew --wintype=bottom --height=6<CR>
-nmap <space>fg :FloatermNew lazygit<CR>
-nmap <space>fd :FloatermNew lazydocker<CR>
-nmap <space>fr :FloatermNew ranger<CR>
-
-" Trigger a highlight in the appropriate direction when pressing these keys:
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline
-
-let g:qs_max_chars=150
-
-let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['   Files']            },
-          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ ]
-let g:startify_session_autoload = 1
-let g:startify_session_delete_buffers = 1
-let g:startify_change_to_vcs_root = 1
-let g:startify_fortune_use_unicode = 1
-let g:startify_session_persistence = 1
-let g:startify_enable_special = 0
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 let g:vimwiki_list = [{

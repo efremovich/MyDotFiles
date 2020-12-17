@@ -1,12 +1,7 @@
 {
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "vue",
-    "js"
-  ],
+  "eslint.filetypes": ["javascript", "typescript", "vue", "js"],
   "diagnostic.refreshAfterSave": true,
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
@@ -33,11 +28,10 @@
     "php"
   ],
   "languageserver": {
-    "golang": {
+    "go": {
       "command": "gopls",
-      "args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
       "rootPatterns": ["go.mod"],
-      "disableWorkspaceFolders": true,
+      "trace.server": "verbose",
       "filetypes": ["go"]
     }
   },
