@@ -6,7 +6,7 @@
 
 #Rofi
 super + d
-    rofi -show combi
+    rofi -show drun
 
 #Toggle fullscreen of window
 super + f

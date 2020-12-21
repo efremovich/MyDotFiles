@@ -14,7 +14,7 @@ let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " Custom setup that removes filetype/whitespace from default vim airline bar
-let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
+"let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
 
 
 " Enable powerline fonts
@@ -32,11 +32,12 @@ endif
 let g:airline#extensions#hunks#enabled=0
 
 " AirLine settings
-"set laststatus=2
+set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#ale#enabled = 1
-"let g:airline#extensions#branch#enabled = 1
-"let g:airline#extensions#hunks#enabled=1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#coc#enabled=1
+let g:airline#extensions#hunks#enabled=1
 catch
   echo 'Airline not installed. It should work after running :PlugInstall'
 endtry
